@@ -3,18 +3,21 @@ gatling-pagination
 
 Gatling load test example for a resource with pagination
 
+In the directory data there are a few Json files with a common structure for pagination
+```json
+{
+  "meta": {
+    "next" : "https://raw.githubusercontent.com/jonasanso/gatling-pagination/master/data/second.json"
+  },
+  "data" : []
+}
+```
+
+The load scenario will follow the next url until while it is present in the responses.
+
 To run: ```$ sbt gatling-it:test```
 
-A basic scenario will be run requesting from github the file in data/first.json
-As first.json contains a next url inside meta, the next url will be executed and so on until a file without next url is reached.
-
-
-Reports are generated into the ```/target/gatling``` folder
-
-Tweak the test parameters directly in [ServiceSimulation.scala](/src/test/scala/ServiceSimulation.scala)
-
-Gatling configuration can be modified in [gatling.conf](/src/test/resources/gatling.conf)
 
 ## References:
-*
+* http://gatling.io/docs/2.2.2/
 * https://github.com/blinkboxbooks/gatling-sbt-template
